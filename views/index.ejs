@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Movies</title>
+    <link rel="stylesheet" type="text/css" href="/Style/index.css">
+</head>
+<body>
+    <nav>
+        <h1><a href="/">Movies</a></h1>
+        <a href="/login">Login/Admin</a>
+    </nav>
+
+    <section class="search">
+        <h2>Busca de Artigos</h2>
+        <form action="/search" method="get">
+            <input type="text" name="keyword" placeholder="Palavra-chave">
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <section class="articles">
+        <h2>Artigos em Destaque</h2>
+        <ul>
+            <% for (let article of featuredArticles) { %>
+                <li><a href="/article/<%= article.id %>"><%= article.title %></a></li>
+            <% } %>
+        </ul>
+        
+        <h2>Artigos Mais Curtidos</h2>
+        <ul>
+            <% for (let article of popularArticles) { %>
+                <li><a href="/article/<%= article.id %>"><%= article.title %></a></li>
+            <% } %>
+        </ul>
+    </section>
+
+    <footer>
+        &copy; 2023 Joao Vitor Costa, Jader Silveira e Gabriel Marcon. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
