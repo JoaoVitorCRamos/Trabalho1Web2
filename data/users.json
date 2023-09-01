@@ -1,0 +1,21 @@
+[
+    {
+      "author_id": "1",
+      "author_name": "Autor 1",
+      "author_email": "autor1@example.com",
+      "author_user": "autor1",
+      "author_pwd": "hashed_password_1",
+      "author_level": "admin",
+      "author_status": "active"
+    },
+    {
+      "author_id": "2",
+      "author_name": "Autor 2",
+      "author_email": "autor2@example.com",
+      "author_user": "autor2",
+      "author_pwd": "hashed_password_2",
+      "author_level": "user",
+      "author_status": "active"
+    }
+  ]
+  

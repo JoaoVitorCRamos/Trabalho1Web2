@@ -1,0 +1,42 @@
+[
+    {
+      "kb_id": "1",
+      "kb_title": "Introdução à Base de Conhecimento",
+      "kb_body": "Este é um artigo de introdução à nossa Base de Conhecimento.",
+      "kb_permalink": "introducao",
+      "kb_keywords": "base de conhecimento, introdução",
+      "kb_liked_count": 15,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "autor1@example.com",
+      "kb_published_date": "2023-08-25"
+    },
+    {
+      "kb_id": "2",
+      "kb_title": "Como criar artigos",
+      "kb_body": "Neste artigo, explicamos como criar artigos na nossa plataforma.",
+      "kb_permalink": "criar-artigos",
+      "kb_keywords": "criação, artigos",
+      "kb_liked_count": 8,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": false,
+      "kb_author_email": "autor2@example.com",
+      "kb_published_date": "2023-08-26"
+    },
+    {
+      "kb_id": "3",
+      "kb_title": "Dicas de escrita",
+      "kb_body": "Aqui estão algumas dicas para melhorar a qualidade dos seus artigos.",
+      "kb_permalink": "dicas-escrita",
+      "kb_keywords": "escrita, dicas",
+      "kb_liked_count": 20,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "autor1@example.com",
+      "kb_published_date": "2023-08-27"
+    }
+  ]
+  
