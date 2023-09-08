@@ -1,32 +1,47 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const articlesData = require("./data/articles.json");
 
-app.use(express.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
-
-// Middleware para autenticação (authenticator.js)
-app.use((req, res, next) => {
-  // Implemente a autenticação aqui
-  next();
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
 });
 
-// Middleware para contagem de curtidas (liked_counter.js)
-app.use((req, res, next) => {
-  // Implemente a contagem de curtidas aqui
-  next();
+app.get("/article/:permalink", function (req, res) {
+    const permalink = req.params.permalink;
+
+    // Procurar o artigo pelo permalink no array de artigos
+    const article = articlesData.find((a) => a.kb_permalink === permalink);
+
+    if (article) {
+        // Renderize a página com título, texto e botão "like"
+        res.send(`
+            <!DOCTYPE html>
+            <html>
+                <body>
+                    <h1>${article.kb_title}</h1>
+                    <p>${article.kb_body}</p>
+                    <button id="likeButton">Like</button>
+                    <script>
+                        const likeButton = document.getElementById("likeButton");
+                        let likes = ${article.kb_liked_count};
+
+                        likeButton.addEventListener("click", function () {
+                            likes++;
+                            // Você pode adicionar a lógica para atualizar o contador de likes aqui.
+                            // Por exemplo, você pode fazer uma solicitação ao servidor para atualizar o contador no JSON.
+
+                            // Atualize o texto do botão para mostrar o novo número de likes
+                            likeButton.innerText = "Like (" + likes + ")";
+                        });
+                    </script>
+                </body>
+            </html>
+        `);
+    } else {
+        res.status(404).send("Artigo não encontrado :c");
+    }
 });
 
-// Rotas
-const articlesRouter = require('./routes/articles');
-const usersRouter = require('./routes/users');
-const loginRouter = require('./routes/login');
-const adminRouter = require('./routes/admin');
-
-app.use('/articles', articlesRouter);
-app.use('/users', usersRouter);
-app.use('/login', loginRouter);
-app.use('/admin', adminRouter);
-
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:3000`);
+app.listen(8081, function(){
+    console.log("servidor rodando suavao");
 });
