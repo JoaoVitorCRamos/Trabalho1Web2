@@ -3,8 +3,8 @@
       "author_id": "1",
       "author_name": "Autor 1",
       "author_email": "autor1@example.com",
-      "author_user": "autor1",
-      "author_pwd": "hashed_password_1",
+      "author_user": "admin",
+      "author_pwd": "admin",
       "author_level": "admin",
       "author_status": "active"
     },
