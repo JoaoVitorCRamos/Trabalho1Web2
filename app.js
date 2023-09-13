@@ -18,7 +18,7 @@ app.get("/usercreate", function(req, res) {
 });
 
 //pagina administracao
-app.get("/administracao/", function(req, res) {
+app.get("/administracao", function(req, res) {
     res.sendFile(__dirname + '/views/admin.html');
 });
 
