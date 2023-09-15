@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/index.css">
+    <title>Trabalho André</title>
+</head>
+<body>
+    <nav>
+        <h1>Pagina de Artigos</h1>
+        <a href="/login"><h3>login</h3></a>
+    </nav>
+    <section id="pesquisa">
+        <label for="txtPesquisa">Pesquisar:</label>
+        <input type="text" id="txtPesquisa">
+        <button><img src="/imgs/procurar.png"></button>
+    </section>
+    
+    <section id="artigos-destaque">
+        <h2 class="h2_artigos">Artigos em Destaque:</h2>
+        <div id="destaques">
+            <% articles
+            .filter(article => article.kb_published && article.kb_suggestion)
+            .sort((a, b) => new Date(b.kb_published_date) - new Date(a.kb_published_date))
+            .slice(0, 10)
+            .forEach(article => { %>
+                <a href='/article/<%= article.kb_permalink %>'>
+                    <h3> <%= article.kb_title %></h3>
+                </a>
+            <% }) %>
+        </div>
+    </section>
+    
+    <section id="artigos-curtidos">
+        <h2 class="h2_artigos">Artigos Mais Curtidos:</h2>
+        <div id="curtidos">
+            <% articles
+            .filter(article => article.kb_published) // Filtra apenas os artigos publicados
+            .sort((a, b) => b.kb_liked_count - a.kb_liked_count) // Classifica pelo kb_liked_count em ordem decrescente
+            .slice(0, 10) // Pega os 10 primeiros
+            .forEach(article => { %>
+                <a href='/article/<%= article.kb_permalink %>'>
+                    <h3> <%= article.kb_title %></h3>
+                </a>
+            <% }) %>
+        </div>
+    </section>
+</body>
+</html>

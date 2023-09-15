@@ -12,8 +12,80 @@
       "author_id": "2",
       "author_name": "Autor 2",
       "author_email": "autor2@example.com",
-      "author_user": "autor2",
-      "author_pwd": "hashed_password_2",
+      "author_user": "user2",
+      "author_pwd": "senha2",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "3",
+      "author_name": "Autor 3",
+      "author_email": "autor3@example.com",
+      "author_user": "user3",
+      "author_pwd": "senha3",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "4",
+      "author_name": "Autor 4",
+      "author_email": "autor4@example.com",
+      "author_user": "user4",
+      "author_pwd": "senha4",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "5",
+      "author_name": "Autor 5",
+      "author_email": "autor5@example.com",
+      "author_user": "user5",
+      "author_pwd": "senha5",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "6",
+      "author_name": "Autor 6",
+      "author_email": "autor6@example.com",
+      "author_user": "user6",
+      "author_pwd": "senha6",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "7",
+      "author_name": "Autor 7",
+      "author_email": "autor7@example.com",
+      "author_user": "user7",
+      "author_pwd": "senha7",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "8",
+      "author_name": "Autor 8",
+      "author_email": "autor8@example.com",
+      "author_user": "user8",
+      "author_pwd": "senha8",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "9",
+      "author_name": "Autor 9",
+      "author_email": "autor9@example.com",
+      "author_user": "user9",
+      "author_pwd": "senha9",
+      "author_level": "user",
+      "author_status": "active"
+    },
+    {
+      "author_id": "10",
+      "author_name": "Autor 10",
+      "author_email": "autor10@example.com",
+      "author_user": "user10",
+      "author_pwd": "senha10",
       "author_level": "user",
       "author_status": "active"
     }

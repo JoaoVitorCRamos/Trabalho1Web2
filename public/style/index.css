@@ -1,0 +1,145 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para a navegação */
+nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+nav h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 28px; 
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Estilo para o login (mover para a direita) */
+nav h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    margin-left: auto;
+    transition: color 0.3s;
+}
+
+/* Estilo de hover para o login */
+nav h3:hover {
+    color: #ffcc00; 
+}
+
+/* Estilo para a seção de pesquisa */
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    align-items: center; 
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    flex: 1; 
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Estilo para o botão de pesquisa e efeito hover */
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+}
+
+/* Efeito hover no botão de pesquisa */
+button:hover {
+    background-color: #555; 
+}
+
+/* Estilo para as seções de artigos em destaque e mais curtidos */
+#artigos-destaque, #artigos-curtidos {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#destaques, #curtidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilo de hover para os links dos artigos */
+a:hover {
+    text-decoration: underline; 
+    color: #ffcc00; 
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0;
+    padding: 5px;
+}
+
+/* Estilo base para os contêineres dos destaques e curtidos */
+#destaques, #curtidos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+}
+
+/* Estilo para cada item dentro dos contêineres */
+#destaques a, #curtidos a {
+    text-decoration: none;
+    color: #333; /* Cor do texto dos itens */
+    background-color: #fff; /* Cor de fundo dos itens */
+    border: 1px solid #ccc; /* Borda dos itens */
+    border-radius: 5px; /* Cantos arredondados dos itens */
+    padding: 10px; /* Espaçamento interno dos itens */
+    width: calc(33.33% - 20px); /* Definir largura para 3 colunas com espaço entre eles */
+    margin: 10px; /* Espaçamento externo dos itens */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra dos itens */
+    transition: background-color 0.3s, color 0.3s; /* Transições de cor suave */
+}
+
+/* Efeito hover para os itens */
+#destaques a:hover, #curtidos a:hover {
+    background-color: #555; /* Cor de fundo ao passar o mouse */
+    color: #fff; /* Cor do texto ao passar o mouse */
+}
+
+/* Mídia query para telas menores (por exemplo, até 768px de largura) */
+@media screen and (max-width: 768px) {
+    #destaques a, #curtidos a {
+        width: calc(50% - 20px); /* Definir largura para 2 colunas com espaço entre eles em telas menores */
+    }
+}

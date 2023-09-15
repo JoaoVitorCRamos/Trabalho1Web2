@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/articles_read.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <h1><%= article.kb_title %></h1>
+        <a href="http://localhost:8081/">Home</a>
+    </nav>
+
+    <section>
+        <p><%= article.kb_body %></p>
+        <button id="likeButton">Like</button>
+    </section>
+
+    <footer>
+        <h4> Data de publicação: <%= article.kb_published_date %></h4>
+        <h4> Autor: <%= user.author_name %></h4>
+        <h4> Email: <%= article.kb_author_email %></h4>
+    </footer>
+</body>
+</html>

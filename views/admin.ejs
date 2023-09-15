@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <nav>
+        <h1>administracao</h1>
+        <a href="http://localhost:8081/"><h3>home</h3></a>
+    </nav>
+    <a href="http://localhost:8081/usercreate"><button>Cadastro/Editar Usuario</button></a>
+    <a href="http://localhost:8081/articlecreate"><button>Criar Artigo</button></a>
+    <h2>Todos os artigos</h2>
+    <section id="artigosAdmin">
+        <% articles.forEach(article => { %>
+                <a href='/article/<%= article.kb_permalink %>'>
+                    <h3> <%= article.kb_title %></h3>
+                    <h4> Publicado: <%= article.kb_published %></h4>
+                </a>
+                <button>Desativar/Ativar Artigo</button>
+                <button>Deletar Artigo</button>
+            <% }) %>
+        
+    </section>
+</body>
+</html>
