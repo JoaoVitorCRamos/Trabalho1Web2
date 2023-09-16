@@ -15,14 +15,16 @@ app.get("/", function(req, res) {
     res.render(__dirname + '/views/index.ejs', {articles : articlesData});
 });
 
-//editar usuario
-app.get("/useredit", function(req, res) {
-    res.render(__dirname + '/views/users_edit.ejs');
-});
-
 //Cadastrar usuario
-app.get("/usercreate", function(req, res) {
-    res.render(__dirname + '/views/users_create.ejs');
+app.get("/article/create/:userId", function(req, res) {
+    const userId = req.params.userId;
+    const user = userData.find((userData) => userData.author_id === userId);
+
+    if (user) {
+        res.render(__dirname + '/views/articles_create.ejs');
+    } else {
+        res.status(404).send("<h1>ERRO AO TENTAR ACHAR O USUARIO!</h1>");
+    }
 });
 
 //pagina administracao
@@ -33,7 +35,7 @@ app.get("/administracao/:userId", function(req, res) {
     //checar se estao tentando passar a perna nos adms
 
     if (user && user.author_level === "admin") {
-        res.render(__dirname + '/views/admin.ejs', {articles : articlesData});
+        res.render(__dirname + '/views/admin.ejs', {articles : articlesData, user: user});
     } else {
         res.status(403).send("Acesso negado. Você não é um administrador. :c");
     }

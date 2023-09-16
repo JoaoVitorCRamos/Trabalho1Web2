@@ -21,7 +21,7 @@
         <h2 class="h2_artigos">Artigos em Destaque:</h2>
         <div id="destaques">
             <% articles
-            .filter(article => article.kb_published && article.kb_suggestion)
+            .filter(article => article.kb_published && article.kb_featured)
             .sort((a, b) => new Date(b.kb_published_date) - new Date(a.kb_published_date))
             .slice(0, 10)
             .forEach(article => { %>
