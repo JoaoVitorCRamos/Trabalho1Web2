@@ -16,7 +16,7 @@ function authenticateUser(req, res, next) {
   if (user.author_level === "admin") {
     res.redirect(`http://localhost:8081/administracao/${user.author_id}`);
   } else if (user.author_level === "user") {
-    res.redirect(`http://localhost:8081/user/${user.author_id}`);
+    res.redirect(`http://localhost:8081/usuario/${user.author_id}`);
   } else {
     // para erros diferentes vai pra ca
     res.redirect("http://localhost:8081");

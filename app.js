@@ -4,6 +4,8 @@ const articlesData = require("./data/articles.json");
 const bodyParser = require("body-parser"); 
 const authenticateUser = require("./middwares/authenticator");
 const userData = require("./data/users.json");
+const fs = require('fs'); 
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,15 +17,97 @@ app.get("/", function(req, res) {
     res.render(__dirname + '/views/index.ejs', {articles : articlesData});
 });
 
-//Cadastrar usuario
+//pagina de criar artigo
 app.get("/article/create/:userId", function(req, res) {
     const userId = req.params.userId;
     const user = userData.find((userData) => userData.author_id === userId);
 
-    if (user) {
+    if (user && user.author_status === "active") {
         res.render(__dirname + '/views/articles_create.ejs');
     } else {
-        res.status(404).send("<h1>ERRO AO TENTAR ACHAR O USUARIO!</h1>");
+        res.status(404).send("<h1>Usuario nao cadastrado ou desativado!</h1>");
+    }
+}).post("/article/create/:userId", function(req, res) {
+    const userId = req.params.userId;
+    const user = userData.find((userData) => userData.author_id === userId);
+
+    if (!user) {
+        return res.status(404).send("<h1>Usuario nao cadastrado ou desativado!</h1>");
+    }
+
+    // Pegar dados digitados
+    const kb_title = req.body.kb_title;
+    const kb_body = req.body.kb_body;
+    const kb_keywords = req.body.kb_keywords;
+    const kb_author_email = user.author_email;
+    
+    // Gerar ID
+    const lastArticle = articlesData[articlesData.length - 1];
+    const lastId = lastArticle ? parseInt(lastArticle.kb_id) : 0;
+    const kb_id = (lastId + 1).toString();
+
+    // Gerar permalink
+    let kb_permalink = kb_title.toLowerCase().replace(/ /g, "-");
+    let permalinkExists = articlesData.some(article => article.kb_permalink === kb_permalink);
+
+    if (permalinkExists) {
+        let counter = 1;
+        let originalPermalink = kb_permalink;
+        do {
+            kb_permalink = originalPermalink + '-' + counter;
+            permalinkExists = articlesData.some(article => article.kb_permalink === kb_permalink);
+            counter++;
+        } while (permalinkExists);
+    }
+
+    // Valores padrões do artigo
+    const kb_liked_count = 0;
+    const kb_published = true;
+    const kb_suggestion = false;
+    const kb_featured = false;
+
+    // Coletor de datas
+    const currentDate = new Date();
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+    const year = currentDate.getFullYear();
+
+    const kb_published_date = `${day}-${month}-${year}`;
+
+    // Cria e posta os artigos
+    const newArticle = {
+        kb_id, 
+        kb_title,
+        kb_body,
+        kb_permalink,
+        kb_keywords,
+        kb_liked_count,
+        kb_published,
+        kb_suggestion,
+        kb_featured,
+        kb_author_email,
+        kb_published_date
+    };
+    articlesData.push(newArticle);
+
+    const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+    fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
+
+    // Vai para a página do artigo
+    res.redirect(`/article/${kb_permalink}`);
+});
+
+//pagina de usuario
+app.get("/usuario/:userId", function(req, res) {
+    const userId = req.params.userId;
+    const user = userData.find((userData) => userData.author_id === userId);
+
+    //checa se existe alguem com esse usuario
+
+    if (user && user.author_status === "active") {
+        res.render(__dirname + '/views/user.ejs', {articles : articlesData, user: user});
+    } else {
+        res.status(403).send("Acesso negado. Usuario não cadastrado ou sua conta foi desativada.:c");
     }
 });
 
@@ -34,10 +118,10 @@ app.get("/administracao/:userId", function(req, res) {
 
     //checar se estao tentando passar a perna nos adms
 
-    if (user && user.author_level === "admin") {
+    if (user && user.author_level === "admin" && user.author_status === "active") {
         res.render(__dirname + '/views/admin.ejs', {articles : articlesData, user: user});
     } else {
-        res.status(403).send("Acesso negado. Você não é um administrador. :c");
+        res.status(403).send("Acesso negado. Você não é um administrador ou sua conta foi desativada. :c");
     }
 });
 

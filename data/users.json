@@ -12,17 +12,17 @@
       "author_id": "2",
       "author_name": "Autor 2",
       "author_email": "autor2@example.com",
-      "author_user": "user2",
-      "author_pwd": "senha2",
-      "author_level": "user",
-      "author_status": "active"
+      "author_user": "admin2",
+      "author_pwd": "admin2",
+      "author_level": "admin",
+      "author_status": "disabled"
     },
     {
       "author_id": "3",
       "author_name": "Autor 3",
       "author_email": "autor3@example.com",
-      "author_user": "user3",
-      "author_pwd": "senha3",
+      "author_user": "3",
+      "author_pwd": "3",
       "author_level": "user",
       "author_status": "active"
     },
@@ -87,7 +87,7 @@
       "author_user": "user10",
       "author_pwd": "senha10",
       "author_level": "user",
-      "author_status": "active"
+      "author_status": "disabled"
     }
   ]
   

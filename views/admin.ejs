@@ -17,10 +17,12 @@
         <% articles.forEach(article => { %>
                 <a href='/article/<%= article.kb_permalink %>'>
                     <h3> <%= article.kb_title %></h3>
-                    <h4> Publicado: <%= article.kb_published %></h4>
                 </a>
+                <h4> Publicado: <%= article.kb_published %></h4>
+                <h4> Destaque: <%= article.kb_featured %></h4>
                 <button>Desativar/Ativar Artigo</button>
                 <button>Deletar Artigo</button>
+                <button>Dar destaque</button>
             <% }) %>
         
     </section>
