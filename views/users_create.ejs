@@ -3,39 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar usuario</title>
+    <title>Criar Artigo</title>
 </head>
 <body>
-    <nav>
-        <h1>Cadastrar usuario</h1>
-        <a href="http://localhost:8081/"><h3>home</h3></a>
-        <a href="http://localhost:8081/administracao"><h3>admin</h3></a>
-    </nav>
-    <form type="submit">
-        
-        <label for="id">ID:</label><br>
-        <input type="text" id="id" name="id"><br>
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email"><br>
-        <label for="login">Login:</label><br>
-        <input type="text" id="login" name="login"><br>
-        <label for="senha">Senha:</label><br>
-        <input type="text" id="senha" name="senha"><br>
-        
-        <label for="nivel">Escolha o nivel de acesso:</label>
-        <select id="nivel" name="nivel">
-            <option value="volvo">admin</option>
-            <option value="saab">user</option>
+    <h1>Criar Novo Artigo</h1>
+    <a href="http://localhost:8081/">Home</a>
+    <form method="POST">
+        <label for="author_name">Nome:</label>
+        <input type="text" id="author_name" name="author_name" required><br>
+
+        <label for="author_email">Email:</label>
+        <input type="text" id="author_email" name="author_email" required><br>
+
+        <label for="author_user">Nome de Usuario:</label>
+        <input type="text" id="author_user" name="author_user" required><br>
+
+        <label for="author_pwd">Senha do Usuario:</label>
+        <input type="text" id="author_pwd" name="author_pwd" required><br>
+
+        <label for="author_level">Escolha o nivel de acesso:</label>
+        <select id="author_level" name="author_level">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
         </select><br>
 
-        <button type="submit" id="btnCadastrar">Cadastrar</button>
+        <input type="submit" value="Cadastrar">
     </form>
-    <h2>Usuarios</h2>
-    <section id="Usuario">
+
+    <h1>Usuarios</h1>
+    <% user.forEach(user => { %>
         
+        <h3> <%= user.author_name %></h3>
         
-    </section>
+        <h4> ativo: <%= user.author_status %></h4>
+        <button>Desativar/Ativar usuario</button>
+        <button>Deletar usuario</button>
+
+    <% }) %>
 </body>
 </html>

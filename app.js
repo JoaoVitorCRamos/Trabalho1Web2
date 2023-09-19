@@ -17,6 +17,52 @@ app.get("/", function(req, res) {
     res.render(__dirname + '/views/index.ejs', {articles : articlesData});
 });
 
+app.get("/create-edit/usuario/:userId", function(req, res){
+    const userId = req.params.userId;
+    const user = userData.find((userData) => userData.author_id === userId);
+
+    if (user && user.author_status === "active" && user.author_level === "admin") {
+        res.render(__dirname + '/views/users_create.ejs', {user : userData});
+    } else {
+        res.status(404).send("<h1>Erro ao acessar!</h1>");
+    }
+}).post("/create-edit/usuario/:userId", function(req, res) {
+    const userId = req.params.userId;
+    const user = userData.find((userData) => userData.author_id === userId);
+
+
+    // Pegar dados digitados
+    const author_name = req.body.author_name;
+    const author_email = req.body.author_email;
+    const author_user = req.body.author_user;
+    const author_pwd = req.body.author_pwd;
+    const author_level = req.body.author_level;
+    const author_status = "active";
+
+    // Gerar ID
+    const lastUser = userData[userData.length - 1];
+    const lastId = lastUser ? parseInt(lastUser.author_id) : 0;
+    const author_id = (lastId + 1).toString();
+
+    // Cria e posta os artigos
+    const newUser = {
+        author_id, 
+        author_name,
+        author_email,
+        author_user,
+        author_pwd,
+        author_level,
+        author_status
+    };
+    userData.push(newUser);
+
+    const userFilePath = path.join(__dirname, 'data', 'users.json');
+    fs.writeFileSync(userFilePath, JSON.stringify(userData, null, 2));
+
+    // Vai para a página do artigo
+    res.redirect(`http://localhost:8081/administracao/${userId}`);
+});
+
 //pagina de criar artigo
 app.get("/article/create/:userId", function(req, res) {
     const userId = req.params.userId;

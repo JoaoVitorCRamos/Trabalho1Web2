@@ -10,7 +10,7 @@
         <h1>administracao</h1>
         <a href="http://localhost:8081/"><h3>home</h3></a>
     </nav>
-    <a href="http://localhost:8081/usercreate"><button>Cadastro/Editar Usuario</button></a>
+    <a href="http://localhost:8081/create-edit/usuario/<%= user.author_id %>"><button>Cadastro/Editar Usuario</button></a>
     <a href="http://localhost:8081/article/create/<%= user.author_id %>"><button>Criar Artigo</button></a>
     <h2>Todos os artigos</h2>
     <section id="artigosAdmin">
@@ -23,7 +23,7 @@
                 <button>Desativar/Ativar Artigo</button>
                 <button>Deletar Artigo</button>
                 <button>Dar destaque</button>
-            <% }) %>
+        <% }) %>
         
     </section>
 </body>
