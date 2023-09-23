@@ -11,11 +11,6 @@
         <h1>Pagina de Artigos</h1>
         <a href="/login"><h3>login</h3></a>
     </nav>
-    <section id="pesquisa">
-        <label for="txtPesquisa">Pesquisar:</label>
-        <input type="text" id="txtPesquisa">
-        <button><img src="/imgs/procurar.png"></button>
-    </section>
     
     <section id="artigos-destaque">
         <h2 class="h2_artigos">Artigos em Destaque:</h2>
@@ -36,9 +31,22 @@
         <h2 class="h2_artigos">Artigos Mais Curtidos:</h2>
         <div id="curtidos">
             <% articles
-            .filter(article => article.kb_published) // Filtra apenas os artigos publicados
+            .filter(article => article.kb_published) // Filtra artigos publicados
             .sort((a, b) => b.kb_liked_count - a.kb_liked_count) // Classifica pelo kb_liked_count em ordem decrescente
-            .slice(0, 10) // Pega os 10 primeiros
+            .slice(0, 10) 
+            .forEach(article => { %>
+                <a href='/article/<%= article.kb_permalink %>'>
+                    <h3> <%= article.kb_title %></h3>
+                </a>
+            <% }) %>
+        </div>
+    </section>
+
+    <section id="artigos-todos">
+        <h2 class="h2_artigos">Todos os artigos:</h2>
+        <div id="todos">
+            <% articles
+            .filter(article => article.kb_published) // Filtra apenas os artigos publicados
             .forEach(article => { %>
                 <a href='/article/<%= article.kb_permalink %>'>
                     <h3> <%= article.kb_title %></h3>

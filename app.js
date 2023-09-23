@@ -3,6 +3,7 @@ const app = express();
 const articlesData = require("./data/articles.json");
 const bodyParser = require("body-parser"); 
 const authenticateUser = require("./middwares/authenticator");
+const likedCounter = require('./middwares/liked_counter');
 const userData = require("./data/users.json");
 const fs = require('fs'); 
 const path = require('path');
@@ -216,7 +217,7 @@ app.get("/article/:permalink", function (req, res) {
     } else {
         res.status(404).send("Artigo não encontrado :c");
     }
-});
+}).post('/like-article/:articleId', likedCounter);
 
 app.listen(8081, function(){
     console.log("servidor rodando suavao em http://localhost:8081/");
