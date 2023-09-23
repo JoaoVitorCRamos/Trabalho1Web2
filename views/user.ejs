@@ -12,14 +12,21 @@
     </nav>
     <a href="http://localhost:8081/article/create/<%= user.author_id %>"><button>Criar Artigo</button></a>
     <h2>Todos os artigos</h2>
-    <section id="artigosAdmin">
+    <section id="artigosUser">
         <% articles.forEach(article => { %>
             <a href='/article/<%= article.kb_permalink %>'>
                 <h3> <%= article.kb_title %></h3>
             </a>
             <h4> Publicado: <%= article.kb_published %></h4>
-            <button>Desativar/Ativar Artigo</button>
-            <button>Deletar Artigo</button>
+            <form action="/toggle-publishedu/<%= article.kb_id %>/<%= article.kb_published %>/<%= user.author_id %>" method="POST">
+                <input type="hidden" name="kb_published" value="<%= article.kb_published %>">
+                <button type="submit" id="toggle_artigo">
+                    <%= article.kb_published ? 'Desativar' : 'Ativar' %> Artigo
+                </button>
+            </form>
+            <form action="/delete-articleu/<%= article.kb_id %>/<%= user.author_id %>" method="POST">
+                <button type="submit" id="delete_artigo">Deletar Artigo</button>
+            </form>
         <% }) %>
         
     </section>

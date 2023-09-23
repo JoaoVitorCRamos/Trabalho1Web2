@@ -20,9 +20,21 @@
                 </a>
                 <h4> Publicado: <%= article.kb_published %></h4>
                 <h4> Destaque: <%= article.kb_featured %></h4>
-                <button>Ativar/Desativar Artigo</button>
-                <button>Ativar/Desativar Destaque</button>
-                <button>Deletar Artigo</button>
+                <form action="/toggle-published/<%= article.kb_id %>/<%= article.kb_published %>/<%= user.author_id %>" method="POST">
+                    <input type="hidden" name="kb_published" value="<%= article.kb_published %>">
+                    <button type="submit" id="toggle_artigo">
+                        <%= article.kb_published ? 'Desativar' : 'Ativar' %> Artigo
+                    </button>
+                </form>
+                <form action="/toggle-featured/<%= article.kb_id %>/<%= article.kb_featured %>/<%= user.author_id %>" method="POST">
+                    <input type="hidden" name="kb_featured" value="<%= article.kb_featured %>">
+                    <button type="submit" id="toggle_destaque">
+                        <%= article.kb_featured ? 'Desativar' : 'Ativar' %> Destaque
+                    </button>
+                </form>                
+                <form action="/delete-article/<%= article.kb_id %>/<%= user.author_id %>" method="POST">
+                    <button type="submit" id="delete_artigo">Deletar Artigo</button>
+                </form>                
         <% }) %>
         
     </section>
