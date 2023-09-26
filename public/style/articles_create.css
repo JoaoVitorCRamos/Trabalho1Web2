@@ -23,14 +23,21 @@ nav h1 {
     font-size: 24px;
 }
 
-a {
+/* Estilo para o link "Home" na navegação */
+nav a {
     text-decoration: none;
-    color: #007bff;
+    color: #fff;
+    margin: 10px;
+    transition: color 0.3s; 
 }
 
-/* Estilo para a seção de conteúdo do artigo */
-section {
-    max-width: 800px;
+nav a:hover {
+    color: #007bff; 
+}
+
+/* Estilo para o formulário de criação de artigo */
+form {
+    max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
@@ -39,19 +46,26 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.6;
+label {
+    font-size: 18px;
+    display: block;
     margin-bottom: 10px;
 }
 
-/* Estilo para o botão "Like" */
-form {
-    text-align: center;
-    margin-top: 20px;
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-button {
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -61,17 +75,6 @@ button {
     font-size: 18px;
 }
 
-button:hover {
+input[type="submit"]:hover {
     background-color: #0056b3;
-}
-
-/* Estilo para o rodapé */
-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-h4 {
-    font-size: 16px;
-    margin-bottom: 5px;
 }

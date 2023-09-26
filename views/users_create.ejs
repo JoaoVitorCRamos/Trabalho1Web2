@@ -3,42 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Artigo</title>
+    <link rel="stylesheet" href="/style/users_create.css">
+    <title>Criar Usuario</title>
 </head>
 <body>
-    <h1>Criar Novo Artigo</h1>
-    <a href="http://localhost:8081/">Home</a>
-    <form method="POST">
-        <label for="author_name">Nome:</label>
-        <input type="text" id="author_name" name="author_name" required><br>
+    <nav>
+        <h1>Criar Novo Artigo</h1>
+        <a href="http://localhost:8081/">Home</a>
+    </nav>
+    <section>
+        <form method="POST">
+            <label for="author_name">Nome:</label>
+            <input type="text" id="author_name" name="author_name" required><br>
 
-        <label for="author_email">Email:</label>
-        <input type="text" id="author_email" name="author_email" required><br>
+            <label for="author_email">Email:</label>
+            <input type="text" id="author_email" name="author_email" required><br>
 
-        <label for="author_user">Nome de Usuario:</label>
-        <input type="text" id="author_user" name="author_user" required><br>
+            <label for="author_user">Nome de Usuario:</label>
+            <input type="text" id="author_user" name="author_user" required><br>
 
-        <label for="author_pwd">Senha do Usuario:</label>
-        <input type="text" id="author_pwd" name="author_pwd" required><br>
+            <label for="author_pwd">Senha do Usuario:</label>
+            <input type="text" id="author_pwd" name="author_pwd" required><br>
 
-        <label for="author_level">Escolha o nivel de acesso:</label>
-        <select id="author_level" name="author_level">
-            <option value="user">user</option>
-            <option value="admin">admin</option>
-        </select><br>
+            <label for="author_level">Escolha o nivel de acesso:</label>
+            <select id="author_level" name="author_level">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select><br>
 
-        <input type="submit" value="Cadastrar">
-    </form>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </section>
 
-    <h1>Usuarios</h1>
-    <% user.forEach(user => { %>
-        
-        <h3> <%= user.author_name %></h3>
-        
-        <h4> ativo: <%= user.author_status %></h4>
-        <button>Desativar/Ativar usuario</button>
-        <button>Deletar usuario</button>
+    <section>
+        <h1>Usuarios</h1>
+        <% user.forEach(user => { %>
+            
+            <h3><%= user.author_name %></h3>
+            <h4>Ativo: <%= user.author_status %></h4>
 
-    <% }) %>
+            <form action="/toggle-user-status/<%= user.author_id %>" method="POST">
+                <input type="hidden" name="author_status" value="<%= user.author_status %>">
+                <button type="submit"><%= user.author_status === "active" ? "Desativar" : "Ativar" %> Usuário</button>
+            </form>
+
+            <form action="/delete-user/<%= user.author_id %>" method="POST">
+                <button type="submit">Deletar Usuário</button>
+            </form>
+
+        <% }) %>
+    </section>
 </body>
 </html>

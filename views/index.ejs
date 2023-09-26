@@ -46,7 +46,7 @@
         <h2 class="h2_artigos">Todos os artigos:</h2>
         <div id="todos">
             <% articles
-            .filter(article => article.kb_published) // Filtra apenas os artigos publicados
+            .filter(article => article.kb_published) 
             .forEach(article => { %>
                 <a href='/article/<%= article.kb_permalink %>'>
                     <h3> <%= article.kb_title %></h3>

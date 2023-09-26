@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/admin.css">
     <title>Admin</title>
 </head>
 <body>
     <nav>
         <h1>administracao</h1>
-        <a href="http://localhost:8081/"><h3>home</h3></a>
+        <a href="http://localhost:8081/"><h2>home</h2></a>
     </nav>
     <a href="http://localhost:8081/create-edit/usuario/<%= user.author_id %>"><button>Cadastro/Editar Usuario</button></a>
     <a href="http://localhost:8081/article/create/<%= user.author_id %>"><button>Criar Artigo</button></a>

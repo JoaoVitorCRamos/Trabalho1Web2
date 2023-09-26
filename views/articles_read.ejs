@@ -15,14 +15,13 @@
     <section>
         <p><%= article.kb_body %></p>
         <form action="/like-article/<%= article.kb_id %>" method="POST">
-            <button type="submit" id="likeButton">Like</button>
+            <button type="submit" id="likeButton">Like<p><%= article.kb_liked_count %></p></button>
         </form>
-        <p><%= article.kb_liked_count %></p>
     </section>
 
     <footer>
+        <h4>Autor: <%= article.kb_author_name %></h4>
         <h4> Data de publicação: <%= article.kb_published_date %></h4>
-        <h4> Autor: <%= user.author_name %></h4>
         <h4> Email: <%= article.kb_author_email %></h4>
     </footer>
 </body>

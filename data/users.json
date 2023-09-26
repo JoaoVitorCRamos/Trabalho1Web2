@@ -1,137 +1,92 @@
 [
   {
     "author_id": "1",
-    "author_name": "Autor 1",
-    "author_email": "autor1@example.com",
-    "author_user": "admin",
-    "author_pwd": "admin",
+    "author_name": "Joao",
+    "author_email": "joao@example.com",
+    "author_user": "joao",
+    "author_pwd": "senha",
     "author_level": "admin",
     "author_status": "active"
   },
   {
     "author_id": "2",
-    "author_name": "Autor 2",
-    "author_email": "autor2@example.com",
-    "author_user": "admin2",
-    "author_pwd": "admin2",
-    "author_level": "admin",
-    "author_status": "disabled"
+    "author_name": "Lucas Santos",
+    "author_email": "lucas.santos@example.com",
+    "author_user": "lucas.santos",
+    "author_pwd": "senha123",
+    "author_level": "user",
+    "author_status": "active"
   },
   {
     "author_id": "3",
-    "author_name": "Autor 3",
-    "author_email": "autor3@example.com",
-    "author_user": "3",
-    "author_pwd": "3",
+    "author_name": "Carla Pereira",
+    "author_email": "carla.pereira@example.com",
+    "author_user": "carla.pereira",
+    "author_pwd": "minhasenha",
     "author_level": "user",
     "author_status": "active"
   },
   {
     "author_id": "4",
-    "author_name": "Autor 4",
-    "author_email": "autor4@example.com",
-    "author_user": "user4",
-    "author_pwd": "senha4",
+    "author_name": "Rafael Silva",
+    "author_email": "rafael.silva@example.com",
+    "author_user": "rafael.silva",
+    "author_pwd": "senha456",
     "author_level": "user",
-    "author_status": "active"
+    "author_status": "disabled"
   },
   {
     "author_id": "5",
-    "author_name": "Autor 5",
-    "author_email": "autor5@example.com",
-    "author_user": "user5",
-    "author_pwd": "senha5",
+    "author_name": "Patrícia Costa",
+    "author_email": "patricia.costa@example.com",
+    "author_user": "patricia.costa",
+    "author_pwd": "senhasegura",
     "author_level": "user",
     "author_status": "active"
   },
   {
     "author_id": "6",
-    "author_name": "Autor 6",
-    "author_email": "autor6@example.com",
-    "author_user": "user6",
-    "author_pwd": "senha6",
-    "author_level": "user",
-    "author_status": "active"
+    "author_name": "Marcelo Santos",
+    "author_email": "marcelo.santos@example.com",
+    "author_user": "marcelo.santos",
+    "author_pwd": "senha1234",
+    "author_level": "admin",
+    "author_status": "disabled"
   },
   {
     "author_id": "7",
-    "author_name": "Autor 7",
-    "author_email": "autor7@example.com",
-    "author_user": "user7",
-    "author_pwd": "senha7",
+    "author_name": "Amanda Oliveira",
+    "author_email": "amanda.oliveira@example.com",
+    "author_user": "amanda.oliveira",
+    "author_pwd": "minhasenhasegura",
     "author_level": "user",
     "author_status": "active"
   },
   {
     "author_id": "8",
-    "author_name": "Autor 8",
-    "author_email": "autor8@example.com",
-    "author_user": "user8",
-    "author_pwd": "senha8",
+    "author_name": "Rodrigo Almeida",
+    "author_email": "rodrigo.almeida@example.com",
+    "author_user": "rodrigo.almeida",
+    "author_pwd": "senha987",
     "author_level": "user",
     "author_status": "active"
   },
   {
     "author_id": "9",
-    "author_name": "Autor 9",
-    "author_email": "autor9@example.com",
-    "author_user": "user9",
-    "author_pwd": "senha9",
-    "author_level": "user",
-    "author_status": "active"
-  },
-  {
-    "author_id": "10",
-    "author_name": "Autor 10",
-    "author_email": "autor10@example.com",
-    "author_user": "user10",
-    "author_pwd": "senha10",
+    "author_name": "Camila Ferreira",
+    "author_email": "camila.ferreira@example.com",
+    "author_user": "camila.ferreira",
+    "author_pwd": "minhasenha123",
     "author_level": "user",
     "author_status": "disabled"
   },
   {
-    "author_id": "11",
-    "author_name": "teste",
-    "author_email": "teste",
-    "author_user": "teste",
-    "author_pwd": "teste",
-    "author_level": "admin",
-    "author_status": "active"
-  },
-  {
-    "author_id": "12",
-    "author_name": "teste",
-    "author_email": "teste",
-    "author_user": "teste",
-    "author_pwd": "teste",
-    "author_level": "admin",
-    "author_status": "active"
-  },
-  {
-    "author_id": "13",
-    "author_name": "teste",
-    "author_email": "teste",
-    "author_user": "teste",
-    "author_pwd": "teste",
-    "author_level": "admin",
-    "author_status": "active"
-  },
-  {
-    "author_id": "14",
-    "author_name": "wqe",
-    "author_email": "qew",
-    "author_user": "wqe",
-    "author_pwd": "wqe",
-    "author_level": "admin",
-    "author_status": "active"
-  },
-  {
-    "author_id": "15",
-    "author_name": "wqe",
-    "author_email": "qew",
-    "author_user": "wqe",
-    "author_pwd": "wqe",
-    "author_level": "admin",
+    "author_id": "10",
+    "author_name": "Gustavo Ramos",
+    "author_email": "gustavo.ramos@example.com",
+    "author_user": "gustavo.ramos",
+    "author_pwd": "senhaforte",
+    "author_level": "user",
     "author_status": "active"
   }
 ]

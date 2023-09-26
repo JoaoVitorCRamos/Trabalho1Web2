@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para a navegação */
+nav {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+nav h1 {
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+/* Estilo para os botões */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para os títulos */
+h2 {
+    font-size: 20px;
+    margin: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+h4 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Estilo para a seção de artigos */
+#artigosAdmin {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para os formulários */
+form {
+    margin-top: 10px;
+}
+
+#toggle_artigo,
+#toggle_destaque,
+#delete_artigo {
+    background-color: #dc3545;
+}
+
+#toggle_artigo:hover,
+#toggle_destaque:hover,
+#delete_artigo:hover {
+    background-color: #c82333;
+    color: #fff;
+}

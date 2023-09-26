@@ -63,62 +63,41 @@ app.get("/create-edit/usuario/:userId", function(req, res){
     // Vai para a página do artigo
     res.redirect(`http://localhost:8081/administracao/${userId}`);
 });
-app.post("/toggle-published/:articleId/:publishedStatus/:userId", function (req, res) {
-    const articleId = req.params.articleId;
-    const newStatus = req.params.publishedStatus === "true" ? false : true;
+app.post("/toggle-user-status/:userId", function (req, res) {
+    const userId = req.params.userId;
+    const newStatus = req.body.author_status === "active" ? "disabled" : "active";
+
+    // Encontre o usuário correspondente no JSON
+    const user = userData.find((userData) => userData.author_id === userId);
+
+    if (user) {
+        // Atualize o status do usuário
+        user.author_status = newStatus;
+
+        // Salve as alterações no arquivo JSON
+        const userFilePath = path.join(__dirname, 'data', 'users.json');
+        fs.writeFileSync(userFilePath, JSON.stringify(userData, null, 2));
+    }
+    
+    res.redirect(req.get('referer'));
+});
+app.post("/delete-user/:userId", function (req, res) {
     const userId = req.params.userId;
 
-    // Update the kb_published status of the article with articleId
-    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
-    if (articleIndex !== -1) {
-        articlesData[articleIndex].kb_published = newStatus;
+    // Encontre o índice do usuário a ser excluído
+    const userIndex = userData.findIndex((userData) => userData.author_id === userId);
 
-        // Save the updated data to the JSON file
-        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
-        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
+    if (userIndex !== -1) {
+        // Remova o usuário da matriz userData
+        userData.splice(userIndex, 1);
+
+        // Salve as alterações no arquivo JSON
+        const userFilePath = path.join(__dirname, 'data', 'users.json');
+        fs.writeFileSync(userFilePath, JSON.stringify(userData, null, 2));
     }
 
-    // Redirect back to the admin page with the user's ID
-    res.redirect(`/administracao/${userId}`);
+    res.redirect(req.get('referer'));
 });
-app.post("/toggle-featured/:articleId/:featuredStatus/:userId", function (req, res) {
-    const articleId = req.params.articleId;
-    const newStatus = req.params.featuredStatus === "true" ? false : true;
-    const userId = req.params.userId;
-
-    // Update the kb_featured status of the article with articleId
-    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
-    if (articleIndex !== -1) {
-        articlesData[articleIndex].kb_featured = newStatus;
-
-        // Save the updated data to the JSON file
-        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
-        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
-    }
-
-    // Redirect back to the admin page with the user's ID
-    res.redirect(`/administracao/${userId}`);
-});
-app.post("/delete-article/:articleId/:userId", function (req, res) {
-    const articleId = req.params.articleId;
-    const userId = req.params.userId;
-
-    // Find the index of the article to delete
-    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
-
-    if (articleIndex !== -1) {
-        // Remove the article from the articlesData array
-        articlesData.splice(articleIndex, 1);
-
-        // Save the updated data to the JSON file
-        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
-        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
-    }
-
-    // Redirect back to the admin page with the user's ID
-    res.redirect(`/administracao/${userId}`);
-});
-
 
 //pagina de criar artigo
 app.get("/article/create/:userId", function(req, res) {
@@ -143,6 +122,7 @@ app.get("/article/create/:userId", function(req, res) {
     const kb_body = req.body.kb_body;
     const kb_keywords = req.body.kb_keywords;
     const kb_author_email = user.author_email;
+    const kb_author_name = user.author_name;
     
     // Gerar ID
     const lastArticle = articlesData[articlesData.length - 1];
@@ -189,6 +169,7 @@ app.get("/article/create/:userId", function(req, res) {
         kb_suggestion,
         kb_featured,
         kb_author_email,
+        kb_author_name,
         kb_published_date
     };
     articlesData.push(newArticle);
@@ -196,9 +177,9 @@ app.get("/article/create/:userId", function(req, res) {
     const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
     fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
 
-    // Vai para a página do artigo
     res.redirect(`/article/${kb_permalink}`);
 });
+
 
 //pagina de usuario
 app.get("/usuario/:userId", function(req, res) {
@@ -219,36 +200,31 @@ app.post("/toggle-publishedu/:articleId/:publishedStatus/:userId", function (req
     const newStatus = req.params.publishedStatus === "true" ? false : true;
     const userId = req.params.userId;
 
-    // Update the kb_published status of the article with articleId
     const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
     if (articleIndex !== -1) {
         articlesData[articleIndex].kb_published = newStatus;
 
-        // Save the updated data to the JSON file
+        // Salva e att o json
         const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
         fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
     }
 
-    // Redirect back to the user's page with the user's ID
     res.redirect(`/usuario/${userId}`);
 });
 app.post("/delete-articleu/:articleId/:userId", function (req, res) {
     const articleId = req.params.articleId;
     const userId = req.params.userId;
 
-    // Find the index of the article to delete
     const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
 
     if (articleIndex !== -1) {
-        // Remove the article from the articlesData array
         articlesData.splice(articleIndex, 1);
 
-        // Save the updated data to the JSON file
+        // Salva e atualiza o json
         const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
         fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
     }
 
-    // Redirect back to the user's page with the user's ID
     res.redirect(`/usuario/${userId}`);
 });
 
@@ -265,6 +241,57 @@ app.get("/administracao/:userId", function(req, res) {
         res.status(403).send("Acesso negado. Você não é um administrador ou sua conta foi desativada. :c");
     }
 });
+-app.post("/toggle-published/:articleId/:publishedStatus/:userId", function (req, res) {
+    const articleId = req.params.articleId;
+    const newStatus = req.params.publishedStatus === "true" ? false : true;
+    const userId = req.params.userId;
+
+    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
+    if (articleIndex !== -1) {
+        articlesData[articleIndex].kb_published = newStatus;
+
+        // Salva e att o json
+        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
+    }
+
+    res.redirect(`/administracao/${userId}`);
+});
+app.post("/toggle-featured/:articleId/:featuredStatus/:userId", function (req, res) {
+    const articleId = req.params.articleId;
+    const newStatus = req.params.featuredStatus === "true" ? false : true;
+    const userId = req.params.userId;
+
+    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
+    if (articleIndex !== -1) {
+        articlesData[articleIndex].kb_featured = newStatus;
+
+        // Salva e att o json
+        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
+    }
+
+    res.redirect(`/administracao/${userId}`);
+});
+app.post("/delete-article/:articleId/:userId", function (req, res) {
+    const articleId = req.params.articleId;
+    const userId = req.params.userId;
+
+    // acha o artigo
+    const articleIndex = articlesData.findIndex((article) => article.kb_id === articleId);
+
+    if (articleIndex !== -1) {
+        // Remove 
+        articlesData.splice(articleIndex, 1);
+
+        // salva e att o json
+        const articlesFilePath = path.join(__dirname, 'data', 'articles.json');
+        fs.writeFileSync(articlesFilePath, JSON.stringify(articlesData, null, 2));
+    }
+
+    res.redirect(`/administracao/${userId}`);
+});
+
 
 //pagina de login
 app.route("/login").get(function (req, res) {
